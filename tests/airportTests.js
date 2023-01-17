@@ -1,5 +1,5 @@
 const { expect, request } = require("../config");
-const AirportFactory = require("../requestFactories/airportFactory.js");
+const AirportFactory = require("../requestFactories/AirportFactory.js");
 
 const airportFactory = new AirportFactory()
 
