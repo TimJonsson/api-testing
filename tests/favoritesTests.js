@@ -1,10 +1,12 @@
 const { request, expect } = require("../config");
+const FavoritesFactory = require("../requestFactories/FavoritesFactory.js");
 
-describe("GET /airports", function () {
-  it("returns all airports, limited to 30 per page", async function () {
-    const response = await request.get("/airports");
+const favoritesFactory = new FavoritesFactory()
 
-    expect(response.status).to.eql(200);
-    expect(response.body.data.length).to.eql(30);
+describe("POST /favorites", function () {
+  it("requires authentication", async function () {
+    let response = await favoritesFactory.postFavoriteWithoutAuth();
+
+    expect(response.status).to.eql(401);
   });
 });
