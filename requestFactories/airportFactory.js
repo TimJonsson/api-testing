@@ -1,12 +1,12 @@
-const { request } = require("../config");
+const { request } = require("../config")
 
 class AirportFactory {
 
      async getAirports() {
-        const response = await request.get("/airports");
+        const response = await request.get("/airports")
 
         return response
     }
 }
 
-module.exports = AirportFactory;
+module.exports = AirportFactory

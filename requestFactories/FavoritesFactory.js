@@ -26,10 +26,10 @@ class FavoritesFactory {
     async deleteFavoriteId(id) {
         const response = await request
         .delete(`/favorites/${id}`)
-        .set("Authorization", `Bearer token=${process.env.AIRPORT_GAP_TOKEN}`);
+        .set("Authorization", `Bearer token=${process.env.AIRPORT_GAP_TOKEN}`)
         
         return response
     }
 }
 
-module.exports = FavoritesFactory;
+module.exports = FavoritesFactory
