@@ -1,12 +1,23 @@
-const { request, expect } = require("../config");
-const FavoritesFactory = require("../requestFactories/FavoritesFactory.js");
+const { request, expect } = require("../config")
+const FavoritesFactory = require("../requestFactories/FavoritesFactory.js")
 
 const favoritesFactory = new FavoritesFactory()
 
 describe("POST /favorites", function () {
-  it("requires authentication", async function () {
-    let response = await favoritesFactory.postFavoriteWithoutAuth();
+  it("Favorites endpoint requires authentication and returns 401", async function () {
+    let response = await favoritesFactory.postFavoriteAirportIdWithoutAuth();
 
-    expect(response.status).to.eql(401);
+    expect(response.status).to.eql(401)
+  });
+
+  it("Add and deletes a favorit airport", async function () {
+    let response = await favoritesFactory.postFavoriteAirport();
+
+    expect(response.status).to.eql(201)
+
+    favoritesId = response.body.data.id
+    console.log(favoritesId)
+    deleteResponse = await favoritesFactory.deleteFavoriteId(favoritesId)
+    expect (response.status).to.eql(201)
   });
 });
