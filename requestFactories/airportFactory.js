@@ -7,6 +7,12 @@ class AirportFactory {
 
         return response
     }
+
+    async getAirport(airport) {
+        const response = await request.get(`/airports/${airport}`)
+        console.log("Respone: ${response}")
+        return response
+    }
 }
 
 module.exports = AirportFactory

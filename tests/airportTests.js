@@ -10,4 +10,11 @@ describe("GET /airports", function () {
     expect(response.status).to.eql(200)
     expect(response.body.data.length).to.eql(30)
   });
+
+  it("returns a specific airport", async function () { 
+    let response = await airportFactory.getAirport("KIX");
+    expect(response.status).to.eql(200)
+  });
 });
+
+
