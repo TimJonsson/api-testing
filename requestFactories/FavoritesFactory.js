@@ -1,4 +1,3 @@
-const { response } = require("express");
 const { request } = require("../config");
 
 class FavoritesFactory {
@@ -12,13 +11,12 @@ class FavoritesFactory {
         return response
     }
 
-    async postFavoriteAirport() {
+    async postFavoriteAirport(id, note) {
         const response = await request.post("/favorites")
             .set("Authorization", `Bearer token=${process.env.AIRPORT_GAP_TOKEN}`)
             .send({
-                airport_id: "JFK",
-                note: "My usual layover when visiting family",
-
+                airport_id: id,
+                note: note,
             });
         return response
     }

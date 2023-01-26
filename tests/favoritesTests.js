@@ -11,7 +11,7 @@ describe("POST /favorites", function () {
   })
 
   it("Add and deletes a favorit airport", async function () {
-    let response = await favoritesFactory.postFavoriteAirport()
+    let response = await favoritesFactory.postFavoriteAirport("JFK", "My usual layover when visiting family")
 
     expect(response.status).to.eql(201)
 
