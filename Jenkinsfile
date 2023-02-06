@@ -1,13 +1,22 @@
 pipeline {
   agent any
+    
+  tools {nodejs "Node"}
+    
   stages {
-    stage('') {
+              
+    stage('Install dependencies') {
       steps {
-        sh '''#!/bin/bash
-
-echo "Hello"'''
+        sh 'npm install'
       }
     }
-
+     
+    stage('Run api Tests') {
+      steps {
+        withCredentials([string(credentialsId: 'AIRPORT_GAP_TOKEN', variable: 'AIRPORT_GAP_TOKEN')]) {
+          sh 'npm test'
+        }
+      }
+    }      
   }
 }
