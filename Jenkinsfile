@@ -13,7 +13,9 @@ pipeline {
      
     stage('Test') {
       steps {
-         sh 'npm test'
+        withCredentials([string(credentialsId: 'AIRPORT_GAP_TOKEN', variable: 'AIRPORT_GAP_TOKEN')]) {
+          sh 'npm test'
+        }
       }
     }      
   }
