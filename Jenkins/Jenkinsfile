@@ -4,6 +4,12 @@ pipeline {
   tools {nodejs "Node"}
     
   stages {
+
+    stage('Clone repository') {
+      steps {
+          checkout scm
+      }
+    }
               
     stage('Install dependencies') {
       steps {
